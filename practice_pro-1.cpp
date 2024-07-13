@@ -23,6 +23,6 @@ int main() {
         ans="Yes";
     }
     std::cout << ans;
-
+    
     return 0;
 }

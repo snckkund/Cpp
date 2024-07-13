@@ -22,7 +22,18 @@ int main() {
     // cout << i-- << endl; // 9, i=8
     // cout << --i << endl; // 7, i=7
 
-    // lec5
+    // for loop
+    // fibonacci
+    int n,a=0,b=1,sum=0;
+    cout << "enter n: ";
+    cin >> n;
+    cout << a << " " << b;
+    for (int i=0; i<n; i++) {
+        sum=a+b;
+        a=b;
+        b=sum;
+        cout << " " << sum;
+    }
 
     return 0;
 }
