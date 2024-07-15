@@ -1,7 +1,4 @@
 #include <iostream>
-#include <cstdio>
-#include <math.h>
-#include <typeinfo>
 
 using namespace std;
 
@@ -96,26 +93,27 @@ int main() {
     //     cout << "Not-Prime";
     // }
 
-    // // decimal to binary for n>1
-    // cout << "enter a decimal: ";
-    // int decimal;
-    // string binary="";
-    // cin >> decimal;
-    // for (; decimal!=0; decimal=decimal/2) {
-    //     binary=to_string(decimal%2)+binary;
+    // // square root of n>=0
+    // cout << "enter a number: ";
+    // int n=0,i=0;
+    // cin >> n;
+    // for (; i<=n;) {
+    //     if (i*i <=n) {
+    //         i++;
+    //     } else {
+    //         break;
+    //     }
     // }
-    // cout << binary;
+    // cout << "integer value for sqrt of(" << n << ") = " << i-1; 
 
-    // // binary to decimal
-    // cout << "enter a binary: ";
-    // string binary;
-    // cin >> binary;
-    // int decimal=0,n=binary.length();
-    // for (int i=0; i<n; i++) {
-    //     int k = (binary[i] - '0') * pow(2, n - i - 1);
-    //     decimal=decimal+k;
+    // // a to the power b, a,b>0
+    // std::cout << "enter a,b: ";
+    // int a,b,out=1;
+    // cin >> a >> b;
+    // for (int i=1; i<=b; i++) {
+    //     out=out*a;
     // }
-    // cout << decimal;
+    // std::cout << "pow(" << a << "," << b << ") = " << out;
 
     return 0;
 }
