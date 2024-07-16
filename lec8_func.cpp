@@ -56,7 +56,11 @@ bool isprime(int x) {
     return prime;
 }
 
-// AP() // - a+rn {h/w}
+// AP() // - a+r*n {h/w}
+float apCal(float a, float r, float n) {
+    float ans = a+r*n;
+    return ans;
+}
 
 // set bits counter in a,b. i.e a=2=0b10, b=3=0b11 --> o/p = 3 {h/w}
 
@@ -98,6 +102,16 @@ int main() {
     // int a;
     // cin >> a;
     // cout << "isPrime() returns " << isprime(a);
+
+    // // apCal
+    // cout << "enter a,r,n: ";
+    // float a,r,n;
+    // cin >> a >> r >> n;
+    // cout << "apCal() returns: " << apCal(a,r,n);
+
+    //
+
+    //
 
     return 0;
 }
