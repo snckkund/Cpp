@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bitset>
 using namespace std;
 
 // power (num1,num2) // - num1,num2 > 0
@@ -62,9 +63,55 @@ float apCal(float a, float r, float n) {
     return ans;
 }
 
+int d2b(int decimal) {
+    string binary="";
+    for (; decimal!=0; decimal=decimal/2) {
+        binary=to_string(decimal%2)+binary;
+    }
+    int bin=stoi(binary);
+    return bin;
+}
+
 // set bits counter in a,b. i.e a=2=0b10, b=3=0b11 --> o/p = 3 {h/w}
+int bitsCount(int a, int b) {
+    a=d2b(a);
+    b=d2b(b);
+    int c_a=0;
+    int c_b=0;
+    for (; a!=0; a/=10) {
+        if (a%10==0) {
+            continue;
+        } else if (a%10==1) {
+            c_a++;
+        }
+    }
+    for (; b!=0; b/=10) {
+        if (b%10==0) {
+            continue;
+        } else if (b%10==1) {
+            c_b++;
+        }
+    }
+    cout << "set bits in a: "<< c_a << "\n" << "set bits in b: " << c_b << endl;
+    return c_a+c_b;
+
+}
 
 // nth fibonacci number {h/w}
+int fibo(int n) {
+    if (n == 1) {
+        return 1;
+    }
+    int a = 0;
+    int b = 1;
+    int sum;
+    for (int i = 2; i <= n; i++) {
+        sum = a + b;
+        a = b;
+        b = sum;
+    }
+    return b;
+}
 
 int main() {
     // // powerOf
@@ -109,9 +156,20 @@ int main() {
     // cin >> a >> r >> n;
     // cout << "apCal() returns: " << apCal(a,r,n);
 
-    //
+    // // decimal to binary
+    // cout << "enter a number: ";
+    // int d;
+    // cin >> d;
+    // cout << "decimal of " << d << " : " << d2b(d);
 
-    //
+    // // bits count
+    // cout << "enter a,b: ";
+    // int a,b;
+    // cin >> a >> b;
+    // cout << "total: " << bitsCount(a,b);
+
+    // nth fibonacci number
+    cout << fibo(9);
 
     return 0;
 }
