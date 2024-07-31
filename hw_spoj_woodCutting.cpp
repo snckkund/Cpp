@@ -1,10 +1,9 @@
 // [!link](https://www.spoj.com/problems/EKO/)
 #include <iostream>
 #include <vector>
-#include <algorithm> // Use for max_element
+#include <algorithm>
 using namespace std;
 
-// Function to check if it's possible to get at least m amount of wood
 bool checkHeight(vector<int>& arr, int mid, int m) {
     int sum = 0;
     for (int i = 0; i < arr.size(); i++) {
@@ -15,16 +14,15 @@ bool checkHeight(vector<int>& arr, int mid, int m) {
     return sum >= m;
 }
 
-// Function to find the maximum height for cutting
 int maxHeight(int n, int m, vector<int>& arr) {
     int start = 0;
-    int end = *max_element(arr.begin(), arr.end()); // Use the maximum height as the upper bound
+    int end = *max_element(arr.begin(), arr.end());
     int mid;
     int ans = -1;
     while (start <= end) {
         mid = start + (end - start) / 2;
         if (checkHeight(arr, mid, m)) {
-            ans = mid; // Possible answer found, try for a higher value
+            ans = mid;
             start = mid + 1;
         } else {
             end = mid - 1;
