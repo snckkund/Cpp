@@ -4,15 +4,24 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
-int minCookTime(vector<int> &rank, int m)
-{
+bool checkTime(vector<int> arr, int mid, int m) {
+
+}
+
+int minCookTime(vector<int> &rank, int m) {
     // Write your code here
 }
 
-
-
 int main() {
-    // code here
-    
+    int n,m;
+    vector<int> rank;
+    cin >> n >> m;
+    for (int i=0; i<n; i++) {
+        int r;
+        cin >> r;
+        rank.push_back(r);
+    }
+    cout << minCookTime(rank,m) << endl;
+
     return 0;
 }
