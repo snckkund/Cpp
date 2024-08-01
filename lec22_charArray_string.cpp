@@ -128,6 +128,50 @@ public:
         }
         return 0;
     }
+
+    // leetcode {# 1047. Remove All Adjacent Duplicates In String}
+    string removeDuplicates(string s) {
+        string temp = "";
+        int i = 0;
+        while(i < s.length()){
+            if(temp.empty() || s[i] != temp.back()){
+                temp.push_back(s[i]);
+            } else{
+                temp.pop_back();
+            }
+            i++;
+        }
+        return temp;
+    }
+
+    // leetcode {# 443. String Compression}
+    int compress(vector<char>& chars) {
+        int i = 0;
+        int ansIndex = 0;
+        int n = chars.size();
+
+        while(i < n){
+            int j = i+1;
+
+            while (j<n && chars[i]==chars[j]) {
+                j++;
+            }
+
+            chars[ansIndex++]=chars[i];
+            int count = j-i;
+
+            if (count > 1) {
+                string cnt = to_string(count);
+                
+                for (char ch:cnt) {
+                    chars[ansIndex++]=ch;
+                }
+            }
+            i=j;
+        }
+        return ansIndex;
+    }
+
 };
 
 int main() {
@@ -164,7 +208,17 @@ int main() {
     // cout << "s1 exist in s2? : " << obj.checkInclusion(s1,s2) << endl;
     // cout << "s1 exist in s21? : " << obj.checkInclusion(s1,s21) << endl;
 
-    
+    // string s1 = "abbaca";
+    // string s2 = "azxxzy";
+    // cout << "remaining string: " << obj.removeDuplicates(s1) << endl;
+    // cout << "remaining string: " << obj.removeDuplicates(s2) << endl;
+
+    // vector<char> chars1 = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
+    // vector<char> chars2 = {'a'};
+    // vector<char> chars3 = {'a','a','b','b','c','c','c'};
+    // cout << "answer index: " << obj.compress(chars1) << endl;
+    // cout << "answer index: " << obj.compress(chars2) << endl;
+    // cout << "answer index: " << obj.compress(chars3) << endl;
 
     return 0;
 }
