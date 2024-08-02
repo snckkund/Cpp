@@ -4,12 +4,38 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
-bool checkTime(vector<int> arr, int mid, int m) {
-
+bool checkTime(const vector<int> &rank, int T, int m) {
+    int totalDishes = 0;
+    for (int r : rank) {
+        int time = 0;
+        int k = 1;
+        while (time + k * r <= T) {
+            time += k * r;
+            totalDishes++;
+            if (totalDishes >= m) return true;
+            k++;
+        }
+    }
+    return totalDishes >= m;
 }
 
-int minCookTime(vector<int> &rank, int m) {
-    // Write your code here
+int minCookTime(const vector<int> &rank, int m) {
+    int n = rank.size();
+    
+    int s = *min_element(rank.begin(), rank.end());
+    int e = *max_element(rank.begin(), rank.end()) * (m * (m + 1)) / 2;
+    int ans = -1;
+    
+    while (s <= e) {
+        int mid = s + (e - s) / 2;
+        if (checkTime(rank, mid, m)) {
+            ans = mid;
+            e = mid - 1;
+        } else {
+            s = mid + 1;
+        }
+    }
+    return ans;
 }
 
 int main() {
