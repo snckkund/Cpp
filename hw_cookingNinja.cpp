@@ -20,7 +20,6 @@ bool checkTime(const vector<int> &rank, int T, int m) {
 }
 
 int minCookTime(const vector<int> &rank, int m) {
-    int n = rank.size();
     
     int s = *min_element(rank.begin(), rank.end());
     int e = *max_element(rank.begin(), rank.end()) * (m * (m + 1)) / 2;
