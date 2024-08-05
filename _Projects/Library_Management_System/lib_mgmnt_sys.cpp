@@ -1,10 +1,10 @@
-/*
-## Creating a Library Management System
-*/
-
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+
 using namespace std;
 
 /**
@@ -33,6 +33,97 @@ struct Book {
 };
 
 /**
+ * Checks if a given year is a leap year.
+ * 
+ * @param year The year to check.
+ * @return True if the year is a leap year, false otherwise.
+ */
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+/**
+ * Checks if a given date is valid.
+ *
+ * @param day The day of the date.
+ * @param month The month of the date.
+ * @param year The year of the date.
+ * @return True if the date is valid, false otherwise.
+ */
+bool isValidDate(int day, int month, int year) {
+    if (year < 1 || month < 1 || month > 12 || day < 1) {
+        return false;
+    }
+
+    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    if (month == 2 && isLeapYear(year)) {
+        daysInMonth[1] = 29;
+    }
+
+    return day <= daysInMonth[month - 1];
+}
+
+/**
+ * Loads books from a CSV file into the inventory.
+ * 
+ * @param books A vector of Book pointers representing the library's collection of books.
+ * @param filename The name of the CSV file to load books from.
+ */
+void loadBooksFromCSV(vector<Book*>& books, const string& filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Could not open file: " << filename << endl;
+        return;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string name, author, date_str, month_str, year_str;
+
+        getline(ss, name, ',');
+        getline(ss, author, ',');
+        getline(ss, date_str, ',');
+        getline(ss, month_str, ',');
+        getline(ss, year_str, ',');
+
+        int date = stoi(date_str);
+        int month = stoi(month_str);
+        int year = stoi(year_str);
+
+        if (isValidDate(date, month, year)) {
+            books.push_back(new Book{name, author, {date, month, year}});
+        }
+    }
+
+    file.close();
+}
+
+/**
+ * Saves books from the inventory to a CSV file.
+ * 
+ * @param books A vector of Book pointers representing the library's collection of books.
+ * @param filename The name of the CSV file to save books to.
+ */
+void saveBooksToCSV(const vector<Book*>& books, const string& filename) {
+    ofstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Could not open file: " << filename << endl;
+        return;
+    }
+
+    for (const auto& book : books) {
+        file << book->name << "," << book->author << ","
+             << book->publish_date.date << ","
+             << book->publish_date.month << ","
+             << book->publish_date.year << endl;
+    }
+
+    file.close();
+}
+
+/**
  * Displays the inventory of books.
  * 
  * @param books A vector of Book pointers representing the inventory of books.
@@ -56,7 +147,7 @@ void showInventory(const vector<Book*>& books) {
  * 
  * @param books A vector of pointers to Book objects.
  */
-void showBook(const vector<Book*>& books) {
+void showBookByName(const vector<Book*>& books) {
     string bookName;
     cout << "Enter the name of the book: ";
     cin.ignore();
@@ -73,31 +164,29 @@ void showBook(const vector<Book*>& books) {
     cout << "Book not found!" << endl;
 }
 
-bool isLeapYear(int year) {
-    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-}
-
 /**
- * Checks if a given date is valid.
- *
- * @param day The day of the date.
- * @param month The month of the date.
- * @param year The year of the date.
- * @return True if the date is valid, false otherwise.
+ * Displays information about books based on the author's name.
+ * 
+ * @param books A vector of pointers to Book objects.
  */
-bool isValidDate(int day, int month, int year) {
+void showBooksByAuthor(const vector<Book*>& books) {
+    string authorName;
+    cout << "Enter the author's name: ";
+    cin.ignore();
+    getline(cin, authorName);
 
-    if (year < 1 || month < 1 || month > 12 || day < 1) {
-        return false;
+    bool found = false;
+    for (const auto& book : books) {
+        if (book->author == authorName) {
+            cout << "Name: " << book->name << ", Author: " << book->author
+                 << ", Publish Date: " << book->publish_date.date << "/"
+                 << book->publish_date.month << "/" << book->publish_date.year << endl;
+            found = true;
+        }
     }
-
-    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-    if (month == 2 && isLeapYear(year)) {
-        daysInMonth[1] = 29;
+    if (!found) {
+        cout << "No books found by this author!" << endl;
     }
-
-    return day <= daysInMonth[month - 1];
 }
 
 /**
@@ -113,29 +202,23 @@ void addBook(vector<Book*>& books) {
     cout << "Enter author name: ";
     getline(cin, newBook->author);
 
-    cout << "Enter publish date (DD MM YYYY): ";
-    valid_date:
-    cin >> newBook->publish_date.date >> newBook->publish_date.month >> newBook->publish_date.year;
-    if (isValidDate(newBook->publish_date.date, newBook->publish_date.month, newBook->publish_date.year)) {
-        books.push_back(newBook);
-        cout << "Book added successfully!" << endl;
-    } else {
-        cout << "enter a valid date (DD MM YYYY): ";
-        goto valid_date;
+    while (true) {
+        cout << "Enter publish date (DD MM YYYY): ";
+        cin >> newBook->publish_date.date >> newBook->publish_date.month >> newBook->publish_date.year;
+        if (isValidDate(newBook->publish_date.date, newBook->publish_date.month, newBook->publish_date.year)) {
+            books.push_back(newBook);
+            cout << "Book added successfully!" << endl;
+            return;
+        } else {
+            cout << "Enter a valid date (DD MM YYYY)." << endl;
+        }
     }
-    return;
 }
 
 /**
  * @brief Allows the user to edit the details of a book in the library management system.
  * 
  * @param books A vector of pointers to Book objects representing the collection of books.
- * 
- * The function prompts the user to enter the name of the book to edit. If the book is found in the collection,
- * the function allows the user to modify the book's name, author, and publish date. The user can choose to keep
- * the current values for any of these fields by pressing enter without entering any new value. The function then
- * updates the book's details accordingly. If the book is not found in the collection, the function displays a
- * "Book not found!" message.
  */
 void editBook(vector<Book*>& books) {
     string bookName;
@@ -155,19 +238,20 @@ void editBook(vector<Book*>& books) {
             getline(cin, newAuthor);
             if (!newAuthor.empty()) book->author = newAuthor;
 
-            valid_date:
-            cout << "Enter new publish date (DD MM YYYY) or 0 0 0 to keep the current one: ";
-            int day, month, year;
-            cin >> day >> month >> year;
-            if (isValidDate(day, month, year) || (day != 0 || month != 0 || year != 0)) {
-                book->publish_date = {day, month, year};
-            } else {
-                cout << "enter a valid date: " << endl;
-                goto valid_date;
+            while (true) {
+                cout << "Enter new publish date (DD MM YYYY) or 0 0 0 to keep the current one: ";
+                int day, month, year;
+                cin >> day >> month >> year;
+                if ((day == 0 && month == 0 && year == 0) || isValidDate(day, month, year)) {
+                    if (day != 0 || month != 0 || year != 0) {
+                        book->publish_date = {day, month, year};
+                    }
+                    cout << "Book edited successfully!" << endl;
+                    return;
+                } else {
+                    cout << "Enter a valid date (DD MM YYYY) or 0 0 0 to keep the current one." << endl;
+                }
             }
-
-            cout << "Book edited successfully!" << endl;
-            return;
         }
     }
     cout << "Book not found!" << endl;
@@ -196,92 +280,62 @@ void removeBook(vector<Book*>& books) {
 }
 
 /**
- * @brief Clears the inventory of books.
+ * Frees the memory allocated for the books in the library.
  * 
- * This function deletes all the books in the given vector and clears the vector.
- * It also prints a message to indicate that the inventory has been cleared.
- * 
- * @param books A vector of Book pointers representing the inventory.
+ * @param books A vector of Book pointers representing the library's collection of books.
  */
-void clearInventory(vector<Book*>& books) {
+void cleanup(vector<Book*>& books) {
     for (auto& book : books) {
-        delete book; // Free memory for each book
+        delete book;
     }
-    books.clear(); // Clear the vector
-    cout << "Inventory cleared!" << endl;
+    books.clear();
 }
 
-/**
- * @brief The main function of the Library Management System.
- * 
- * This function serves as the entry point of the program. It initializes a vector of books,
- * adds predefined books to the inventory, and presents a menu of options to the user.
- * The user can perform operations such as showing the inventory, adding a book, editing a book,
- * removing a book, and quitting the program.
- * 
- * @return 0 indicating successful program execution.
- */
 int main() {
-    char userInput=' ';
     vector<Book*> books;
-    char& optn = userInput;
 
-    // Add predefined books
-    books.push_back(new Book{"To Kill a Mockingbird", "Harper Lee", {11, 7, 1960}});
-    books.push_back(new Book{"1984", "George Orwell", {8, 6, 1949}});
-    books.push_back(new Book{"The Great Gatsby", "F. Scott Fitzgerald", {10, 4, 1925}});
-    books.push_back(new Book{"Pride and Prejudice", "Jane Austen", {28, 1, 1813}});
-    books.push_back(new Book{"The Catcher in the Rye", "J.D. Salinger", {16, 7, 1951}});
+    // Load books from CSV file
+    loadBooksFromCSV(books, "library_inventory.csv");
 
-    while (optn) {
-        cout << endl << "+-+-+-+( Library Management System )+-+-+-+" << endl;
-        cout << "+ (z) : show whole inventory              +" << endl;
-        cout << "+ (s) : show a book                       +" << endl;
-        cout << "+ (a) : add a book                        +" << endl;
-        cout << "+ (e) : edit a book                       +" << endl;
-        cout << "+ (r) : remove a book                     +" << endl;
-        cout << "+ (c) : clear inventory                   +" << endl;
-        cout << "+ (x) : clear output buffer               +" << endl;
-        cout << "+ (q) : quit()                            +" << endl;
-        cout << "+-+-+-+( x - x - x - x - x - x - x )+-+-+-+" << endl;
+    int choice;
+    while (true) {
+        cout << "Library Management System" << endl;
+        cout << "1. Show Inventory" << endl;
+        cout << "2. Add Book" << endl;
+        cout << "3. Edit Book" << endl;
+        cout << "4. Remove Book" << endl;
+        cout << "5. Show Book by Name" << endl;
+        cout << "6. Show Books by Author" << endl;
+        cout << "7. Save and Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-        switch_start:
-        cout << " ~ $ : ";
-        cin >> userInput;
-
-        switch (userInput) {
-            case 'z':
+        switch (choice) {
+            case 1:
                 showInventory(books);
-                goto switch_start;
-            case 's':
-                showBook(books);
-                goto switch_start;
-            case 'a':
+                break;
+            case 2:
                 addBook(books);
-                goto switch_start;
-            case 'e':
+                break;
+            case 3:
                 editBook(books);
-                goto switch_start;
-            case 'r':
+                break;
+            case 4:
                 removeBook(books);
                 break;
-            case 'c':
-                clearInventory(books);
-                goto switch_start;
-            case 'x':
-#ifdef _WIN32
-                system("CLS");
-#else
-                system("clear");
-#endif
+            case 5:
+                showBookByName(books);
                 break;
-            case 'q':
-                clearInventory(books); // Ensure all memory is freed before quitting
-                cout << "(-/ quitting.. /-)" << endl;
+            case 6:
+                showBooksByAuthor(books);
+                break;
+            case 7:
+                saveBooksToCSV(books, "library_inventory.csv");
+                cleanup(books);
+                cout << "Exiting..." << endl;
                 return 0;
             default:
-                cout << "Enter a valid operation." << endl;
-                goto switch_start;
+                cout << "Invalid choice. Please try again." << endl;
         }
     }
 
