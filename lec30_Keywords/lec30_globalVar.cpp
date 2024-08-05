@@ -1,16 +1,21 @@
 #include <iostream>
 using namespace std;
 
-void a() {
+int n = 15; // creating global variable
 
+void a() {
+    cout << "inside a(): " << n << endl;
 }
 
 void b() {
-    
+    cout << "inside b(): " << n << endl;
 }
 
 int main() {
-    // code here
+
+    cout << "inside main(): " << n << endl;
+    a();
+    b();
     
     return 0;
 }
