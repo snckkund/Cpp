@@ -275,7 +275,7 @@ int main() {
 #else
                 system("clear");
 #endif
-                goto switch_start;
+                break;
             case 'm':
                 break;
             case 'q':
