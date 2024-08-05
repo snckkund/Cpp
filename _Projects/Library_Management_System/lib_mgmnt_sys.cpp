@@ -242,7 +242,6 @@ int main() {
         cout << "+ (r) : remove a book                     +" << endl;
         cout << "+ (c) : clear inventory                   +" << endl;
         cout << "+ (x) : clear output buffer               +" << endl;
-        cout << "+ (m) : menu                              +" << endl;
         cout << "+ (q) : quit()                            +" << endl;
         cout << "+-+-+-+( x - x - x - x - x - x - x )+-+-+-+" << endl;
 
@@ -275,8 +274,6 @@ int main() {
 #else
                 system("clear");
 #endif
-                break;
-            case 'm':
                 break;
             case 'q':
                 clearInventory(books); // Ensure all memory is freed before quitting
