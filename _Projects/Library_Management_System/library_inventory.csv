@@ -1,3 +1,4 @@
+name,author,publish_date.date,publish_date.month,publish_date.year
 The Great Gatsby,F. Scott Fitzgerald,10,4,1925
 To Kill a Mockingbird,Harper Lee,11,7,1960
 1984,George Orwell,8,6,1949
@@ -6,3 +7,4 @@ Moby Dick,Herman Melville,18,10,1851
 War and Peace,Leo Tolstoy,9,9,1869
 The Catcher in the Rye,J.D. Salinger,16,7,1951
 The Hobbit,J.R.R. Tolkien,21,9,1937
+some book 1,some auth 1,2,3,4

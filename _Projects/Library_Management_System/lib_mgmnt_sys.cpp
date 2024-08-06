@@ -51,7 +51,7 @@ bool isLeapYear(int year) {
  * @return True if the date is valid, false otherwise.
  */
 bool isValidDate(int day, int month, int year) {
-    if (year < 1 || month < 1 || month > 12 || day < 1) {
+    if ((year < 1 || month < 1 || month > 12 || day < 1)) {
         return false;
     }
 
@@ -61,7 +61,7 @@ bool isValidDate(int day, int month, int year) {
         daysInMonth[1] = 29;
     }
 
-    return day <= daysInMonth[month - 1];
+    return (day <= daysInMonth[month - 1]);
 }
 
 /**
@@ -78,22 +78,24 @@ void loadBooksFromCSV(vector<Book*>& books, const string& filename) {
     }
 
     string line;
-    while (getline(file, line)) {
-        stringstream ss(line);
-        string name, author, date_str, month_str, year_str;
+    if (getline(file, line)) {
+        while (getline(file, line)) {
+            stringstream ss(line);
+            string name, author, date_str, month_str, year_str;
 
-        getline(ss, name, ',');
-        getline(ss, author, ',');
-        getline(ss, date_str, ',');
-        getline(ss, month_str, ',');
-        getline(ss, year_str, ',');
+            getline(ss, name, ',');
+            getline(ss, author, ',');
+            getline(ss, date_str, ',');
+            getline(ss, month_str, ',');
+            getline(ss, year_str, ',');
 
-        int date = stoi(date_str);
-        int month = stoi(month_str);
-        int year = stoi(year_str);
+            int date = stoi(date_str);
+            int month = stoi(month_str);
+            int year = stoi(year_str);
 
-        if (isValidDate(date, month, year)) {
-            books.push_back(new Book{name, author, {date, month, year}});
+            if (isValidDate(date, month, year)) {
+                books.push_back(new Book{name, author, date, month, year});
+            }
         }
     }
 
@@ -249,7 +251,7 @@ void editBook(vector<Book*>& books) {
                     cout << "Book edited successfully!" << endl;
                     return;
                 } else {
-                    cout << "Enter a valid date (DD MM YYYY) or 0 0 0 to keep the current one." << endl;
+                    cout << "Enter a valid date." << endl;
                 }
             }
         }
@@ -297,45 +299,60 @@ int main() {
     // Load books from CSV file
     loadBooksFromCSV(books, "library_inventory.csv");
 
-    int choice;
+    char choice;
     while (true) {
-        cout << "Library Management System" << endl;
-        cout << "1. Show Inventory" << endl;
-        cout << "2. Add Book" << endl;
-        cout << "3. Edit Book" << endl;
-        cout << "4. Remove Book" << endl;
-        cout << "5. Show Book by Name" << endl;
-        cout << "6. Show Books by Author" << endl;
-        cout << "7. Save and Exit" << endl;
-        cout << "Enter your choice: ";
-        cin >> choice;
+        menu_lvl:
+        cout << endl;
+        cout << "+-+-+(Library Management System)+-+-+" << endl;
+        cout << "+ 1. Show Inventory                 +" << endl;
+        cout << "+ 2. Add Book                       +" << endl;
+        cout << "+ 3. Edit Book                      +" << endl;
+        cout << "+ 4. Remove Book                    +" << endl;
+        cout << "+ 5. Show Book by Name              +" << endl;
+        cout << "+ 6. Show Books by Author           +" << endl;
+        cout << "+ 7. Save and Exit                  +" << endl;
+        cout << "+ 0. clear screen                   +" << endl;
+        cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+        cout << endl;
 
-        switch (choice) {
-            case 1:
-                showInventory(books);
-                break;
-            case 2:
-                addBook(books);
-                break;
-            case 3:
-                editBook(books);
-                break;
-            case 4:
-                removeBook(books);
-                break;
-            case 5:
-                showBookByName(books);
-                break;
-            case 6:
-                showBooksByAuthor(books);
-                break;
-            case 7:
-                saveBooksToCSV(books, "library_inventory.csv");
-                cleanup(books);
-                cout << "Exiting..." << endl;
-                return 0;
-            default:
-                cout << "Invalid choice. Please try again." << endl;
+        while (true) {
+            cout << " ~ $ ";
+            cin >> choice;
+
+            switch (choice) {
+                case '1':
+                    showInventory(books);
+                    break;
+                case '2':
+                    addBook(books);
+                    break;
+                case '3':
+                    editBook(books);
+                    break;
+                case '4':
+                    removeBook(books);
+                    break;
+                case '5':
+                    showBookByName(books);
+                    break;
+                case '6':
+                    showBooksByAuthor(books);
+                    break;
+                case '0':
+#ifdef _WIN32
+                    system("CLS");
+#else
+                    system("clear");
+#endif
+                    goto menu_lvl;
+                case '7':
+                    saveBooksToCSV(books, "library_inventory.csv");
+                    cleanup(books);
+                    cout << "Exiting..." << endl;
+                    return 0;
+                default:
+                    cout << "Invalid choice. Please try again." << endl;
+            }
         }
     }
 

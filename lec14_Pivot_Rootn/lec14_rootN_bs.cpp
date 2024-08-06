@@ -1,4 +1,4 @@
-// Square Root of a number {code360}
+// @LeetCode: Square Root of a number
 
 #include <iostream>
 #include <vector>

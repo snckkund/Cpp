@@ -110,7 +110,9 @@ int main() {
 
     /*  how many change of notes it will take to get me a particular value of money
         with options (₹ 500, 100, 50, 20, 10, 5, 2, 1) notes/coins
-        for ex: ₹ 1331 requires: 2x 500, 3x 100, 1x 20, 1x 10, 1x 1 {h/w} */
+        for ex: ₹ 1331 requires: 2x 500, 3x 100, 1x 20, 1x 10, 1x 1 {h/w} 
+        @Homework    
+    */
     cout << "Enter a value: ";
     int rup;
     int c_500=0, c_200=0, c_100=0, c_50=0, c_20=0, c_10=0, c_5=0, c_2=0, c_1=0;

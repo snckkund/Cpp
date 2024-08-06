@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// // leetcode problem #1281
+// // @LeetCode problem #1281
 // class Solution {
 // public:
 //     int subtractProductAndSum(int n) {

@@ -11,7 +11,7 @@ bool isPrime(int n) {
     return true;
 }
 
-// leetcode {# 204. count primes} - Sieve of Eratosthenes - O(n*log(log(n)))
+// @LeetCode {# 204. count primes} - Sieve of Eratosthenes - O(n*log(log(n)))
 int countPrimes(int n) {
     if (n < 2) return 0;
     int count = 0;
@@ -58,7 +58,7 @@ int GCDeuII(int a,int b){
    else {return GCDeuII(b, a%b);}
 }
 
-// code 360 {Modular Exponentiation}
+// @Code360 {Modular Exponentiation}
 int modularExponentiation(int x, int n, int m) {
 	// Write your code here.
 	int res = 1;
@@ -99,10 +99,10 @@ int divisible(int n, int a, int b) {
 
     return (c1 + c2 - c3); // divisible by a + divisible by b - divisible by both a and b
 }
-// TODO: 
-// segmented seive [✓]
-// pigeon hole principle
-// catalon number
+// TODO 
+// [x] segmented seive
+// [ ] pigeon hole principle
+// [ ] catalon number
 int main() {
     // code here
     // cout << "enter a number: ";

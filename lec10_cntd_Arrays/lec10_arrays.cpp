@@ -36,7 +36,7 @@ void swapArray(int arr[], int size) {
 
 }
 
-// Find Unique {codestudio ques}
+// @Code360: Find Unique 
 int findUnique(int *arr, int size)
 {
     //Write your code here
@@ -47,7 +47,7 @@ int findUnique(int *arr, int size)
     return ans;
 }
 
-// Intersection Of Two Sorted Arrays {codestudio ques}
+// @Code360: Intersection Of Two Sorted Arrays
 vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
 {
 	// Write your code here.
@@ -70,7 +70,7 @@ vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, i
 	return ans;
 }
 
-// pair sum {codestudio ques}
+// @Code360: pair sum
 vector<vector<int>> pairSum(vector<int> &arr, int s){
    // Write your code here.
    vector< vector <int> > ans;
@@ -88,7 +88,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
    return ans;
 }
 
-// 3sum {codestudio}
+// @Code360: 3sum 
 vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 	// Write your code here.
 	set<vector<int>> st;
@@ -113,9 +113,8 @@ vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 	return result;
 }
 
-// sort 0,1,2 {codestudio}
-
-// // unique number of occurrences {leetcode ques #1207}
+// TODO @Code360: sort 0,1,2
+// // unique number of occurrences {@LeetCode ques #1207}
 // class Solution {
 // public:
 //    bool uniqueOccurrences(std::vector<int>& arr) {
@@ -141,7 +140,7 @@ vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 //     } 
 // };
 
-// // Find All Duplicates in an Array {leetcode ques #442}
+// // Find All Duplicates in an Array {@LeetCode ques #442}
 // class Solution {
 // public:
 //     vector<int> findDuplicates(vector<int>& nums) {

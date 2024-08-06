@@ -52,7 +52,6 @@ int main() {
     // cout << sizeof(ptr2) << endl; // 4 (size of pointer)
     // cout << sizeof(&ptr2) << endl; // 4 (size of address stored in pointer)
 
-    
 
     return 0;
 }

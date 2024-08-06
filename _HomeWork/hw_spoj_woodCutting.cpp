@@ -1,4 +1,4 @@
-// [!link](https://www.spoj.com/problems/EKO/)
+// [!link](https://www.spoj.com/problems/EKO/) @Homework
 #include <iostream>
 #include <vector>
 #include <algorithm>

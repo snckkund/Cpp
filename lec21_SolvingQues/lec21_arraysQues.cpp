@@ -9,7 +9,7 @@ void printVec(vector<int>& arr, int n) {
     } cout << endl;
 }
 
-// sum of two arrays {code360}
+// @Code360: sum of two arrays
 vector<int> findArraySum(vector<int>& a, int n, vector<int>& b, int m) {
     int i = n - 1;
     int j = m - 1;
@@ -41,7 +41,7 @@ vector<int> findArraySum(vector<int>& a, int n, vector<int>& b, int m) {
 
 class Solution {
 public:
-    // leetcode {# 189. rotate array}
+    // @LeetCode {# 189. rotate array}
     void rotate(vector<int>& nums, int k) {
         int n = nums.size();
         vector<int> temp(n);
@@ -52,7 +52,7 @@ public:
         printVec(nums,n);
     }
 
-    // leet code {# 1752. Check if Array Is Sorted and Rotated}
+    // @LeetCode  {# 1752. Check if Array Is Sorted and Rotated}
     bool check(vector<int>& nums) {
         int count = 0;
         int n = nums.size();

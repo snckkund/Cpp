@@ -11,7 +11,7 @@ void printVector(const vector<T>& vec) {
     cout << endl;
 }
 
-// code360 {reverse an array}
+// @Code360: {reverse an array}
 void reverseArray(vector<int> &arr , int m) {
     // Write your code here       	
     int s = m+1;
@@ -25,7 +25,7 @@ void reverseArray(vector<int> &arr , int m) {
 
 class Solution {
 public:
-    // leetcode {# 88. Merge Sorted Array}
+    // @LeetCode {# 88. Merge Sorted Array}
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         vector<int> newArr;
         for (int i=0; i<m+n; i++) {
@@ -41,7 +41,7 @@ public:
         printVector(nums1);
     }
 
-    // leetcode {# 283. Move Zeroes}
+    // @LeetCode {# 283. Move Zeroes}
     void moveZeroes(vector<int>& nums) {
         int i=0;
         for (int j=0; j<nums.size(); j++) {

@@ -3,7 +3,7 @@
 #include <climits>
 using namespace std;
 
-// // // leet code ques #1009
+// // // @LeetCode ques #1009
 // class Solution {
 // public:
 //     int bitwiseComplement(int n) {
@@ -21,7 +21,7 @@ using namespace std;
 //     }
 // };
 
-// // leet code ques #7
+// // @LeetCode ques #7
 // class Solution {
 // public:
 //     int reverse(int x) {
@@ -39,7 +39,7 @@ using namespace std;
 //     }
 // };
 
-// // leet code ques #231
+// // @LeetCode ques #231
 // class Solution {
 // public:
 //     bool isPowerOfTwo(int n) {
