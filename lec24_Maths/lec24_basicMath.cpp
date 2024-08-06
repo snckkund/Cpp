@@ -11,7 +11,7 @@ bool isPrime(int n) {
     return true;
 }
 
-// @LeetCode {# 204. count primes} - Sieve of Eratosthenes - O(n*log(log(n)))
+// @Leetcode {# 204. count primes} - Sieve of Eratosthenes - O(n*log(log(n)))
 int countPrimes(int n) {
     if (n < 2) return 0;
     int count = 0;

@@ -2,8 +2,7 @@
 #include <vector>
 using namespace std;
 
-// @Code360
-// First and Last Position of an Element In Sorted Array
+// @Code360: First and Last Position of an Element In Sorted Array
 int firstOcc(int arr[], int size, int key) {
     int start = 0;
     int end = size-1;
@@ -44,7 +43,7 @@ int lastOcc(int arr[], int size, int key) {
     return ans;
 }
 
-// @LeetCode {# 852). Peak Index in a Mountain Array
+// @Leetcode {# 852). Peak Index in a Mountain Array
 class Solution {
 public:
     int peakIndexInMountainArray(vector<int>& arr) {

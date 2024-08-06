@@ -1,5 +1,5 @@
 /*
-creating jaggered array in dynamic memory @Homework
+  @Homework: creating jaggered array in dynamic memory 
 */
 #include <iostream>
 using namespace std;

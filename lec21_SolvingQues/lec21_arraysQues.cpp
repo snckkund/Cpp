@@ -41,7 +41,7 @@ vector<int> findArraySum(vector<int>& a, int n, vector<int>& b, int m) {
 
 class Solution {
 public:
-    // @LeetCode {# 189. rotate array}
+    // @Leetcode {# 189. rotate array}
     void rotate(vector<int>& nums, int k) {
         int n = nums.size();
         vector<int> temp(n);
@@ -52,7 +52,7 @@ public:
         printVec(nums,n);
     }
 
-    // @LeetCode  {# 1752. Check if Array Is Sorted and Rotated}
+    // @Leetcode  {# 1752. Check if Array Is Sorted and Rotated}
     bool check(vector<int>& nums) {
         int count = 0;
         int n = nums.size();

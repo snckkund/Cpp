@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// // @LeetCode problem #1281
+// // @Leetcode problem #1281
 // class Solution {
 // public:
 //     int subtractProductAndSum(int n) {
@@ -18,7 +18,7 @@ using namespace std;
 //     }
 // };
 
-// // leetcode problem #191
+// // @Leetcode problem #191
 // class Solution {
 // public:
 //     int hammingWeight(int n) {

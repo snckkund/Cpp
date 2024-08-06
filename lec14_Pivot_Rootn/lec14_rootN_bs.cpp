@@ -1,4 +1,4 @@
-// @LeetCode: Square Root of a number
+// @Leetcode: {#69 Sqrt(x)}
 
 #include <iostream>
 #include <vector>

@@ -25,7 +25,7 @@ void reverseArray(vector<int> &arr , int m) {
 
 class Solution {
 public:
-    // @LeetCode {# 88. Merge Sorted Array}
+    // @Leetcode {# 88. Merge Sorted Array}
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         vector<int> newArr;
         for (int i=0; i<m+n; i++) {
@@ -41,7 +41,7 @@ public:
         printVector(nums1);
     }
 
-    // @LeetCode {# 283. Move Zeroes}
+    // @Leetcode {# 283. Move Zeroes}
     void moveZeroes(vector<int>& nums) {
         int i=0;
         for (int j=0; j<nums.size(); j++) {

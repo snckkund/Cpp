@@ -81,7 +81,7 @@ vector<int> wavePrint(vector<vector<int>> arr, int nRows, int mCols)
     return wave;
 }
 
-// @LeetCode {# 54. Spiral Matrix}
+// @Leetcode {# 54. Spiral Matrix}
 vector<int> spiralOrder(vector<vector<int>>& matrix) {
     if (matrix.empty() || matrix[0].empty()) return {};
 
@@ -140,7 +140,7 @@ void printVecVec(vector<vector<int>>& arr) {
         } cout << endl;
     }
 }
-// @LeetCode {# 48. Rotate Image}
+// @Leetcode {# 48. Rotate Image}
 void rotate90(vector<vector<int>>& matrix) {
     int n = matrix.size();
 
@@ -199,7 +199,7 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
     return false;
 }
 
-// @LeetCode {# 240. Search a 2D Matrix II}
+// @Leetcode {# 240. Search a 2D Matrix II}
 bool searchMatrixII(vector<vector<int>>& matrix, int target) {
     if (matrix.empty() || matrix[0].empty()) return false;
 

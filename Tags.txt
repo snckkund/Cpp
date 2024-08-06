@@ -4,9 +4,9 @@
  * - TODO: Indicates a task that needs to be completed.
  * - FIXME: Indicates a known issue or bug that needs to be fixed.
  * - @Code360: Represents a tag related to the code360 platform.
- * - @LeetCode: Represents a tag related to the Leetcode platform.
- * - @NOTE: Represents a general note or comment.
- * - @GFG: Represents a tag related to the GeeksforGeeks platform.
+ * - @Leetcode: Represents a tag related to the LeetCode platform.
+ * - @Note: Represents a general note or comment.
+ * - @Gfg: Represents a tag related to the GeeksforGeeks platform.
  * - @Question: Represents a tag related to a question or problem.
  * - @Homework: Represents a tag related to homework or assignments.
  * - [ ]: Represents an unchecked checkbox.

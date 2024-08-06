@@ -33,7 +33,7 @@ string replaceSpaces(string &str) {
 
 class Solution {
 public:
-    // @LeetCode {# 125. Valid Palindrome}
+    // @Leetcode {# 125. Valid Palindrome}
     bool isPalindrome(string s) {
         int start = 0;
         int end = s.size() - 1;
@@ -56,7 +56,7 @@ public:
         return true;
     }
 
-    // @GFG: Function to find the maximum occurring character in a string.
+    // @Gfg: Function to find the maximum occurring character in a string.
     char getMaxOccuringChar(string str)
     {
         // Your code here
@@ -77,7 +77,7 @@ public:
         return maxc;
     }
 
-    // @LeetCode {# 1910. Remove All Occurrences of a Substring}
+    // @Leetcode {# 1910. Remove All Occurrences of a Substring}
     string removeOccurrences(string s, string part) {
         while (s.length()!=0 && s.find(part)<s.length()) {
             s.erase(s.find(part),part.length());
@@ -85,7 +85,7 @@ public:
         return s;
     }
 
-    // @LeetCode {# 567. Permutation in String}
+    // @Leetcode {# 567. Permutation in String}
     bool checkEqual(int a[26], int b[26]) {
         for (int i=0; i<26; i++) {
             if (a[i]!=b[i]) {
@@ -129,7 +129,7 @@ public:
         return 0;
     }
 
-    // @LeetCode {# 1047. Remove All Adjacent Duplicates In String}
+    // @Leetcode {# 1047. Remove All Adjacent Duplicates In String}
     string removeDuplicates(string s) {
         string temp = "";
         int i = 0;
@@ -144,7 +144,7 @@ public:
         return temp;
     }
 
-    // @LeetCode {# 443. String Compression}
+    // @Leetcode {# 443. String Compression}
     int compress(vector<char>& chars) {
         int i = 0;
         int ansIndex = 0;

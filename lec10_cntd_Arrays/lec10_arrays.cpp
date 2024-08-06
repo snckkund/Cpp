@@ -114,7 +114,7 @@ vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 }
 
 // TODO @Code360: sort 0,1,2
-// // unique number of occurrences {@LeetCode ques #1207}
+// // @Leetcode {#1207 unique number of occurrences}
 // class Solution {
 // public:
 //    bool uniqueOccurrences(std::vector<int>& arr) {
@@ -140,7 +140,7 @@ vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 //     } 
 // };
 
-// // Find All Duplicates in an Array {@LeetCode ques #442}
+// //  {@Leetcode {#442 Find All Duplicates in an Array}
 // class Solution {
 // public:
 //     vector<int> findDuplicates(vector<int>& nums) {
