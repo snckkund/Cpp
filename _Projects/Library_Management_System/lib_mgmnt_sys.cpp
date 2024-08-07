@@ -9,6 +9,8 @@
 using namespace std;
 
 /**
+ * @diagram: \c library-management-system.excalidraw.svg
+ * 
  * @struct DATE
  * @brief Represents a date with day, month, and year.
  * 
