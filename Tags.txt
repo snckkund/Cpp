@@ -3,6 +3,8 @@
  * The tags include:
  * - TODO: Indicates a task that needs to be completed.
  * - FIXME: Indicates a known issue or bug that needs to be fixed.
+ * - BUG: Indicates a known issue or bug that needs to be fixed.
+ * - @Project: Indicates a project. jkl Indicates a project
  * - @Code360: Represents a tag related to the code360 platform.
  * - @Leetcode: Represents a tag related to the LeetCode platform.
  * - @Note: Represents a general note or comment.

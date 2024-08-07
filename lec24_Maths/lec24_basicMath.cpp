@@ -99,7 +99,7 @@ int divisible(int n, int a, int b) {
 
     return (c1 + c2 - c3); // divisible by a + divisible by b - divisible by both a and b
 }
-// TODO 
+// TODO Topics [ ]
 // [x] segmented seive
 // [ ] pigeon hole principle
 // [ ] catalon number
