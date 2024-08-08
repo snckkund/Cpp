@@ -16,5 +16,7 @@ int main() {
  * - [ ]pivot
  * - [ ]search in rotated array
  * - [ ]sqrt
+ * - [ ]selection sort
+ * - [ ]insertion sort
  * 
  */
