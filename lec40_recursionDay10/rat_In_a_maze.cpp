@@ -133,6 +133,13 @@ int main() {
                                 {1, 1}};
     vector<string> out7 = obj.findPath(mat7); // {"DR", "RD"}
     obj.print(out7);  
+    // Test case: 8
+    vector<vector<int>> mat8 = {{1, 0, 1, 1},
+                                {1, 1, 1, 1}, 
+                                {0, 1, 0, 1},
+                                {1, 1, 1, 1}};
+    vector<string> out8 = obj.findPath(mat8); // {"DRDDRR","DRRRDD","DRRURDDD"}
+    obj.print(out8);  
 
     return 0;
 }
