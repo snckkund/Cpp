@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+// @Leetcode: {78. subsets}
 class powerSet
 {
 private:
@@ -23,9 +23,8 @@ public:
         for (vector<int> i:v) {
             cout << "{";
             for (int j:i) {
-                cout << j << " ";
-            }
-            cout << "}" << endl;
+                cout << j << (j!=i[i.size()-1]?",":"");
+            }cout << "}" << endl;
         }cout << endl;
     }
     vector<vector<int>> subsets(vector<int>& nums) {

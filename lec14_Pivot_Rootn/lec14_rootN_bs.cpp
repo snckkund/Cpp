@@ -1,5 +1,4 @@
 // @Leetcode: {#69 Sqrt(x)}
-
 #include <iostream>
 #include <vector>
 using namespace std;
