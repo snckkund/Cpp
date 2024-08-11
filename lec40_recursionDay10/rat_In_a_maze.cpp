@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <mylibs/utilsc++>
 using namespace std;
 
 class Solution {
@@ -60,12 +61,6 @@ private:
         visited[x][y] = 0;
     }
 public:
-    void print(vector<string>& str) {
-        cout << "{";
-        for (string i:str) {
-            cout << "\"" << i << "\"" << (i!=str[str.size()-1]?",":"");
-        }cout << "}" << endl;
-    }
     vector<string> findPath(vector<vector<int>> &mat) {
         // Your code goes here
         int n = mat.size();
@@ -99,47 +94,47 @@ int main() {
                                 {1, 1, 0, 0},
                                 {0, 1, 1, 1}};
     vector<string> out1 = obj.findPath(mat1); // {"DDRDRR", "DRDDRR"}
-    obj.print(out1);
+    MyUtils::printVector(out1);
     // Test case: 2
     vector<vector<int>> mat2 = {{1, 0},
                                 {1, 0}};
     vector<string> out2 = obj.findPath(mat2); // {}
-    obj.print(out2);  
+    MyUtils::printVector(out2);  
     // Test case: 3
     vector<vector<int>> mat3 = {{1, 1, 1},
                                 {0, 0, 1}, 
                                 {0, 0, 1}};
     vector<string> out3 = obj.findPath(mat3); // {"RRDD"}
-    obj.print(out3);            
+    MyUtils::printVector(out3);            
     // Test case: 4
     vector<vector<int>> mat4 = {{1, 1, 1},
                                 {1, 1, 0}, 
                                 {1, 1, 1}};
     vector<string> out4 = obj.findPath(mat4); // {"DDRR","DRDR","RDDR","RDLDRR"}
-    obj.print(out4);  
+    MyUtils::printVector(out4);  
     // Test case: 5
     vector<vector<int>> mat5 = {{1}};
     vector<string> out5 = obj.findPath(mat5); // {""}
-    obj.print(out5);  
+    MyUtils::printVector(out5);  
     // Test case: 6
     vector<vector<int>> mat6 = {{1, 0, 1, 1},
                                 {1, 1, 1, 0}, 
                                 {0, 1, 0, 1},
                                 {1, 1, 1, 1}};
     vector<string> out6 = obj.findPath(mat6); // {"DRDDRR"}
-    obj.print(out6);  
+    MyUtils::printVector(out6);  
     // Test case: 7
     vector<vector<int>> mat7 = {{1, 1},
                                 {1, 1}};
     vector<string> out7 = obj.findPath(mat7); // {"DR", "RD"}
-    obj.print(out7);  
+    MyUtils::printVector(out7);  
     // Test case: 8
     vector<vector<int>> mat8 = {{1, 0, 1, 1},
                                 {1, 1, 1, 1}, 
                                 {0, 1, 0, 1},
                                 {1, 1, 1, 1}};
     vector<string> out8 = obj.findPath(mat8); // {"DRDDRR","DRRRDD","DRRURDDD"}
-    obj.print(out8);  
+    MyUtils::printVector(out8);  
 
     return 0;
 }
