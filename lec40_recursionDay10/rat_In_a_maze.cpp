@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <mylibs/utilsc++>
+#include <mylibs/utilsc++.h>
 using namespace std;
 
 class Solution {
@@ -135,6 +135,14 @@ int main() {
                                 {1, 1, 1, 1}};
     vector<string> out8 = obj.findPath(mat8); // {"DRDDRR","DRRRDD","DRRURDDD"}
     MyUtils::printVector(out8);  
+    // Test case: 9
+    vector<vector<int>> mat9 = {{1, 0, 1, 1, 1},
+                                {1, 0, 1, 0, 1},
+                                {1, 0, 1, 0, 1},
+                                {1, 1, 1, 0, 1},
+                                {0, 0, 1, 1, 1}};
+    vector<string> out9 = obj.findPath(mat9); // {DDDRRDRR,DDDRRUUURRDDDD}
+    MyUtils::printVector(out9); 
 
     return 0;
 }

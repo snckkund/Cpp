@@ -1,5 +1,5 @@
 #include <iostream>
-#include <mylibs/utilsc++>
+#include <mylibs/utilsc++.h>
 using namespace std;
 /**
  * checking my local libs
@@ -37,6 +37,26 @@ int main() {
     MyUtils::print2DVector(vvi);
     MyUtils::print2DVector(vvd);
     MyUtils::print2DVector(vvs);
+
+    // Matrix
+    vector<vector<int>> intMatrix = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    vector<vector<double>> doubleMatrix = {
+        {1.1, 2.2, 3.3},
+        {4.4, 5.5, 6.6},
+        {7.7, 8.8, 9.9}
+    };
+    vector<vector<char>> charMatrix = {
+        {'a', 'b', 'c'},
+        {'d', 'e', 'f'},
+        {'g', 'h', 'i'}
+    };
+    MyUtils::printMatrix(intMatrix);
+    MyUtils::printMatrix(doubleMatrix);
+    MyUtils::printMatrix(charMatrix);
 
     return 0;
 }
