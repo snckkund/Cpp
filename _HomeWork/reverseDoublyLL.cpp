@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// [ ]reverse a doubly link list
+// @Homework: reverse a doubly link list
 
 int main() {
     // code here
