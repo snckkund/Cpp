@@ -2,7 +2,6 @@
 using namespace std;
 
 // @Code360:  Flatten A Linked List
-
 class Node {
 public:
     int data;
@@ -26,7 +25,8 @@ Node* merge(Node* a, Node* b) {
         result = b;
         result->child = merge(a, b->child);
     }
-
+    
+	result->next = NULL;
     return result;
 }
 
